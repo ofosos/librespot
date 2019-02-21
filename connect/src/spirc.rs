@@ -471,8 +471,10 @@ impl SpircTask {
             }
 
             MessageType::kMessageTypePause => {
-                self.handle_pause();
-                self.notify(None);
+	        if frame.get_ident() != "play-token" {
+                   self.handle_pause();
+                   self.notify(None);
+		}
             }
 
             MessageType::kMessageTypeNext => {
